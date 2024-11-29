@@ -63,13 +63,13 @@ export const Pokemons = () => {
     );
   };
 
-  const {
-    isLoading: isLoadingFilteredPokemons,
-    data: filteredPokemons,
-    refetch,
-  } = useQuery(["typePokemon", selectTypes], () => fetchPokemonsByType(), {
-    enabled: !!selectTypes,
-  });
+  const { data: filteredPokemons, refetch } = useQuery(
+    ["typePokemon", selectTypes],
+    () => fetchPokemonsByType(),
+    {
+      enabled: !!selectTypes,
+    }
+  );
 
   const pokemonsToShow = () => {
     if (selectTypes && filteredPokemons) {
