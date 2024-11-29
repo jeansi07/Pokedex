@@ -27,7 +27,7 @@ ChartJS.register(
   Legend
 );
 
-const PokemonCharts: React.FC<{
+export const PokemonCharts: React.FC<{
   onClick: (type: PokemonTypeData) => void;
   types: PokemonTypeData[];
 }> = ({ types, onClick }) => {
@@ -60,7 +60,7 @@ const PokemonCharts: React.FC<{
   return (
     <div>
       <h2>Estadísticas de Pokémon por tipo</h2>
-      <div className="grid grid-cols-2 py-7 ">
+      <div className="grid xl:grid-cols-2 grid-cols-1 py-7 ">
         <div className="relative">
           <Bar
             width="100%"
@@ -84,4 +84,3 @@ const PokemonCharts: React.FC<{
     </div>
   );
 };
-export default PokemonCharts;

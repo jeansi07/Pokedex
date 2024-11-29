@@ -9,10 +9,10 @@ type PokemonData = {
   types: { name: string; color: string }[];
 };
 
-const PokeCard: React.FC<{ onClick: () => void; pokemon: PokemonData }> = ({
-  pokemon,
-  onClick,
-}) => {
+export const PokeCard: React.FC<{
+  onClick: () => void;
+  pokemon: PokemonData;
+}> = ({ pokemon, onClick }) => {
   const { abilities, heigth, title, types, weigth, image } = pokemon;
   return (
     <div
@@ -55,5 +55,3 @@ const PokeCard: React.FC<{ onClick: () => void; pokemon: PokemonData }> = ({
     </div>
   );
 };
-
-export default PokeCard;

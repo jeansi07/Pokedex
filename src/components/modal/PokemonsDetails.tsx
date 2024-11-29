@@ -7,11 +7,13 @@ type PokemonsTypeProps = {
   open: boolean;
   pokemon: PokemonResponse;
   onClose: () => void;
+  colorPokemon: string[];
 };
 const PokemonsDetails: React.FC<PokemonsTypeProps> = ({
   open,
   onClose,
   pokemon,
+  colorPokemon,
 }) => {
   const { data, isLoading } = useQuery(
     ["Encounters", pokemon.name],
@@ -25,11 +27,22 @@ const PokemonsDetails: React.FC<PokemonsTypeProps> = ({
   return (
     <Dialog
       as="div"
-      className="bg-gray-200 fixed top-0 h-screen p-5 overflow-y-auto"
+      className="bg-white fixed top-0 h-screen"
       open={open}
       onClose={() => onClose()}
     >
-      <Dialog.Panel>
+      <Dialog.Panel
+        style={{
+          borderColor: colorPokemon[0],
+          background:
+            colorPokemon.length === 1
+              ? colorPokemon[0] + "50"
+              : `linear-gradient(to bottom,${colorPokemon
+                  .map((color) => color + "50")
+                  .join(",")})`,
+        }}
+        className="p-5 h-full w-full border-2 rounded-r-xl overflow-y-auto"
+      >
         <Dialog.Title>{pokemon.name}</Dialog.Title>
         <div className="w-24">
           <img src={pokemon.sprites.front_default} />
